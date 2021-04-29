@@ -1,2 +1,2 @@
-const TOKEN: &str = "";
+pub const TOKEN: &str = "";
 pub const PREFIX: &str = "";

@@ -46,6 +46,7 @@ async fn user(ctx: &Context, msg: &Message) -> CommandResult {
         None => String::from("https://discord.com/assets/322c936a8c8be1b803cd94861bdfa868.png"), // URL of default avatar
     };
 
+    // UTC +09:00
     let create_date = msg.author.created_at().with_timezone(&FixedOffset::east(9*3600)).format("%Y-%m-%d %Z").to_string();
 
     if let Err(why) = msg.channel_id.send_message(ctx, |message| {
@@ -69,24 +70,19 @@ async fn user(ctx: &Context, msg: &Message) -> CommandResult {
 #[command]
 async fn server(ctx: &Context, msg: &Message) -> CommandResult {
     if let Err(why) = msg.channel_id.send_message(ctx, |message | {
-        message.embed(|embed | {
-            embed.title("This is a title");
-            embed.description("This is a description");
-            embed.image("attachment://ferris_eyes.png");
-            embed.fields(vec![
+        message.embed(|embed | embed
+            .title("This is a title")
+            .description("This is a description")
+            .image("attachment://ferris_eyes.png")
+            .fields(vec![
                 ("This is the first field", "This is a field body", true),
                 ("This is the second field", "Both of these fields are inline", true),
-            ]);
-            embed.field("This is the third field", "This is not an inline field", false);
-            embed.footer(|footer| {
-                footer.text("This is a footer");
-
-                footer
-            });
-
-            embed
-        });
-        message
+            ])
+            .field("This is the third field", "This is not an inline field", false)
+            .footer(|footer| footer
+                .text("This is a footer")
+            )
+        )
     }).await {
         println!("Error sending message: {:?}", why);
     }

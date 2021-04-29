@@ -50,7 +50,6 @@ async fn user(ctx: &Context, msg: &Message) -> CommandResult {
     let create_date = msg.author.created_at().with_timezone(&FixedOffset::east(9*3600)).format("%Y-%m-%d %Z").to_string();
 
     if let Err(why) = msg.channel_id.send_message(ctx, |message| {
-
         message.embed(|embed| embed
             .colour(0x00ff00)
             .title(format!("{}'s information", nick_name))
@@ -69,7 +68,7 @@ async fn user(ctx: &Context, msg: &Message) -> CommandResult {
 
 #[command]
 async fn server(ctx: &Context, msg: &Message) -> CommandResult {
-    if let Err(why) = msg.channel_id.send_message(ctx, |message | {
+    if let Err(why) = msg.channel_id.send_message(ctx, |message| {
         message.embed(|embed| embed
             .title("This is a title")
             .description("This is a description")

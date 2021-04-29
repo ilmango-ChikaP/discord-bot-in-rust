@@ -12,4 +12,8 @@ A Discord Bot Written in Rust🦀
 
 2. Edit `src/config.rs` (Set Discord Bot token and command prefix)
 
-3. Run `cargo run --release` in `discord-bot-in-rust/`
+3. Run `cargo run --release` at `discord-bot-in-rust/`
+
+## License
+
+[煮たり焼いたりしてください.](https://github.com/ilmango-doge/discord-bot-in-rust/blob/master/LICENSE)

@@ -70,7 +70,7 @@ async fn user(ctx: &Context, msg: &Message) -> CommandResult {
 #[command]
 async fn server(ctx: &Context, msg: &Message) -> CommandResult {
     if let Err(why) = msg.channel_id.send_message(ctx, |message | {
-        message.embed(|embed | embed
+        message.embed(|embed| embed
             .title("This is a title")
             .description("This is a description")
             .image("attachment://ferris_eyes.png")
